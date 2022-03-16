@@ -1,0 +1,17 @@
+.header-container {
+  border-bottom: 2px solid;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.iconContainer {
+  margin: 0 5%;
+  cursor: pointer;
+}
+
+.menuIcon {
+  height: 40px;
+  width: 40px;
+}
