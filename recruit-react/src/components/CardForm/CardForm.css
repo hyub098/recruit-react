@@ -10,14 +10,22 @@
 
 .cardForm-submitContainer {
   width: 100%;
-  margin: 0 8px;
+  margin: 0 16px;
 }
 
 .cardForm-CreditCardContainer {
-  width: 100%;
-  margin: 16px 0;
+  margin: 16px;
 }
 
 .cardForm-CvcDateContainer {
   display: flex;
+  margin: 16px;
+}
+
+.cardForm-Cvc {
+  margin: 0 16px;
+}
+
+.fullWidth {
+  width: 100%;
 }

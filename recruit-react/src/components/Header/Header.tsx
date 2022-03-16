@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ pageHandler }) => {
     <div className="header-container">
       <IconContext.Provider value={{ className: "menuIcon" }}>
         <div className="iconContainer">
-          <div onClick={toggleMenuIcon}>
+          <div onClick={toggleMenuIcon} aria-label="Menu button">
             {showMenu ? <AiOutlineMenu /> : <AiOutlineArrowLeft />}
           </div>
         </div>

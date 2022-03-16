@@ -47,46 +47,57 @@ const CardForm: React.FC = () => {
       <h2 className="cardForm-welcome">Welcome Peter</h2>
 
       <form noValidate autoComplete="off">
-        <TextField
-          className="cardForm-CreditCardContainer"
-          id="outlined-basic"
-          label="Credit card number"
-          variant="outlined"
-          type="number"
-          error={creditCardErr}
-          onChange={(e) => setCreditCard(+e.target.value)}
-        />
-        <div className="cardForm-CvcDateContainer">
+        <div className="cardForm-CreditCardContainer">
           <TextField
+            className="fullWidth"
+            aria-label="Credit card number"
             id="outlined-basic"
-            label="CVC"
+            label="Credit card number"
             variant="outlined"
             type="number"
-            error={cvcErr}
-            onChange={(e) => setCVC(+e.target.value)}
+            fullWidth
+            error={creditCardErr}
+            onChange={(e) => setCreditCard(+e.target.value)}
           />
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
-              label="expiry"
-              value={date}
-              onChange={(newValue) => {
-                setDate(newValue);
-              }}
-              renderInput={(params) => (
-                <TextField {...params} error={dateErr} />
-              )}
-            />
-          </LocalizationProvider>
         </div>
+        <div className="cardForm-CvcDateContainer">
+          <div></div>
+          <div className="cardForm-Cvc">
+            <TextField
+              aria-label="CVC"
+              id="outlined-basic"
+              label="CVC"
+              variant="outlined"
+              type="number"
+              error={cvcErr}
+              onChange={(e) => setCVC(+e.target.value)}
+            />
+          </div>
+          <div>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                aria-label="expiry date"
+                label="expiry"
+                value={date}
+                onChange={(newValue) => {
+                  setDate(newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField {...params} error={dateErr} />
+                )}
+              />
+            </LocalizationProvider>
+          </div>
+        </div>
+        <Button
+          aria-label="Submit button"
+          className="cardForm-submitContainer"
+          variant="outlined"
+          onClick={onSubmit}
+        >
+          Submit
+        </Button>
       </form>
-
-      <Button
-        className="cardForm-submitContainer"
-        variant="outlined"
-        onClick={onSubmit}
-      >
-        Submit
-      </Button>
     </div>
   );
 };
