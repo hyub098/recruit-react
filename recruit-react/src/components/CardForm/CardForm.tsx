@@ -1,5 +1,5 @@
 import React from "react";
-import { FormControl, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import DatePicker from "@mui/lab/DatePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -11,10 +11,37 @@ const CardForm: React.FC = () => {
   const [creditCard, setCreditCard] = React.useState<null | number>(null);
   const [cvc, setCVC] = React.useState<null | number>(null);
 
+  const [creditCardErr, setCreditCardErr] = React.useState(false);
+  const [cvcErr, setCvcErr] = React.useState(false);
+  const [dateErr, setDateErr] = React.useState(false);
+
   const onSubmit = () => {
+    let hasErr = false;
+    if (creditCard == null) {
+      setCreditCardErr(true);
+      hasErr = true;
+    }
+    if (cvc == null) {
+      setCvcErr(true);
+      hasErr = true;
+    }
+    if (date == null) {
+      setDateErr(true);
+      hasErr = true;
+    }
+
+    if (hasErr) {
+      return;
+    }
+
     console.log(creditCard);
     console.log(cvc);
+
+    setCreditCardErr(false);
+    setCvcErr(false);
+    setDateErr(false);
   };
+
   return (
     <div className="cardForm-container">
       <h2 className="cardForm-welcome">Welcome Peter</h2>
@@ -26,6 +53,7 @@ const CardForm: React.FC = () => {
           label="Credit card number"
           variant="outlined"
           type="number"
+          error={creditCardErr}
           onChange={(e) => setCreditCard(+e.target.value)}
         />
         <div className="cardForm-CvcDateContainer">
@@ -34,6 +62,7 @@ const CardForm: React.FC = () => {
             label="CVC"
             variant="outlined"
             type="number"
+            error={cvcErr}
             onChange={(e) => setCVC(+e.target.value)}
           />
           <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -43,7 +72,9 @@ const CardForm: React.FC = () => {
               onChange={(newValue) => {
                 setDate(newValue);
               }}
-              renderInput={(params) => <TextField {...params} />}
+              renderInput={(params) => (
+                <TextField {...params} error={dateErr} />
+              )}
             />
           </LocalizationProvider>
         </div>
