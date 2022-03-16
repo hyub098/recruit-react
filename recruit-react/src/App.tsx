@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import CardForm from "./components/CardForm/CardForm";
 import Header from "./components/Header/Header";
+import MenuPage from "./components/MenuPage/MenuPage";
 
 function App() {
+  const [showCardForm, setShowCardForm] = useState(true);
   return (
     <div>
-      <Header />
-      <CardForm />
+      <Header pageHandler={setShowCardForm} />
+      {showCardForm ? <CardForm /> : <MenuPage />}
     </div>
   );
 }

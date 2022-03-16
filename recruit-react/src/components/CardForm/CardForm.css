@@ -1,0 +1,23 @@
+.cardForm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardForm-welcome {
+  margin: 25%;
+}
+
+.cardForm-submitContainer {
+  width: 100%;
+  margin: 0 8px;
+}
+
+.cardForm-CreditCardContainer {
+  width: 100%;
+  margin: 16px 0;
+}
+
+.cardForm-CvcDateContainer {
+  display: flex;
+}

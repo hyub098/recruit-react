@@ -3,11 +3,17 @@ import "./Header.css";
 import { AiOutlineMenu, AiOutlineArrowLeft } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
-const Header: React.FC = () => {
-  const [showMenu, setShowMenu] = useState(false);
+type HeaderProps = {
+  pageHandler: (value: boolean) => void;
+};
+
+const Header: React.FC<HeaderProps> = ({ pageHandler }) => {
+  const [showMenu, setShowMenu] = useState(true);
 
   const toggleMenuIcon = () => {
-    setShowMenu(!showMenu);
+    const newValue = !showMenu;
+    setShowMenu(newValue);
+    pageHandler(newValue);
   };
 
   return (
