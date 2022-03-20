@@ -1,6 +1,6 @@
-import React from "react";
+import { FC } from "react";
 
-const MenuPage: React.FC = () => {
+const MenuPage: FC = () => {
   return <div>This is menu content</div>;
 };
 

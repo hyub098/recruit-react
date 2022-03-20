@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import "./Header.css";
 import { AiOutlineMenu, AiOutlineArrowLeft } from "react-icons/ai";
 import { IconContext } from "react-icons";
@@ -7,7 +7,7 @@ type HeaderProps = {
   pageHandler: (value: boolean) => void;
 };
 
-const Header: React.FC<HeaderProps> = ({ pageHandler }) => {
+const Header: FC<HeaderProps> = ({ pageHandler }) => {
   const [showMenu, setShowMenu] = useState(true);
 
   const toggleMenuIcon = () => {
@@ -20,7 +20,11 @@ const Header: React.FC<HeaderProps> = ({ pageHandler }) => {
     <div className="header-container">
       <IconContext.Provider value={{ className: "menuIcon" }}>
         <div className="iconContainer">
-          <div onClick={toggleMenuIcon} aria-label="Menu button">
+          <div
+            data-testid="menu-button"
+            onClick={toggleMenuIcon}
+            aria-label="Menu button"
+          >
             {showMenu ? <AiOutlineMenu /> : <AiOutlineArrowLeft />}
           </div>
         </div>
